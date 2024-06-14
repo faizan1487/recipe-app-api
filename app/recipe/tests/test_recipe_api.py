@@ -14,7 +14,7 @@ from core.models import Recipe
 
 from recipe.serializers import RecipeSerializer
 
-RECIPES_URL = reverse('recipe:recipe')
+RECIPES_URL = reverse('recipe:recipe-list')
 
 def create_recipe(user, **params):
     """Create and return a sample recipe."""
@@ -47,7 +47,7 @@ class PrivateRecipeApiTests(TestCase):
     
     def setUp(self):
         self.client = APIClient()
-        self.user = get_user_model().objects().create_user(
+        self.user = get_user_model().objects.create_user(
             'user@example.com',
             'testpass123',
         )
