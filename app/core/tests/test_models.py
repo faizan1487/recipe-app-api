@@ -77,5 +77,4 @@ class ModelTests(TestCase):
         """Test creating a tag is successful."""
         user = create_user()
         tag = models.Tag.objects.create(user=user, name='Tag1')
-        print(tag)
         self.assertEqual(str(tag), tag.name)
