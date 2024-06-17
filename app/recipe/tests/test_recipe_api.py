@@ -198,6 +198,7 @@ class PrivateRecipeApiTests(TestCase):
             'title': 'Thai Prawn Curry',
             'time_minutes': 30,
             'price': Decimal('2.50'),
+            'description': 'sample des',
             'tags': [{'name': 'Thai'}, {'name': 'Dinner'}]
         }
 
