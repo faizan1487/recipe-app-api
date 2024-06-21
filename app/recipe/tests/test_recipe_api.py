@@ -321,7 +321,7 @@ class PrivateRecipeApiTests(TestCase):
             'price': Decimal('4.30'),
             'ingredients': [{'name': 'Cauliflower'}, {'name': 'Salt'}]
         }
-        res = self.client.post(RECIPES_URL, payload)
+        res = self.client.post(RECIPES_URL, payload, format='json')
         recipes = Recipe.objects.filter(user=self.user)
         self.assertEqual(recipes.count(), 1)
         recipe = recipes[0]
@@ -338,12 +338,11 @@ class PrivateRecipeApiTests(TestCase):
         ingredient = Ingredient.objects.create(user=self.user, name='Lemon')
         payload = {
             'title': 'Vietnamese Soup',
-            'time_minites': 25,
+            'time_minutes': 25,
             'price': 2.55,
             'ingredients': [{'name': 'Lemon'}, {'name': 'Fish Sauce'}]
         }
-        res = self.client.post(RECIPES_URL, payload)
-        
+        res = self.client.post(RECIPES_URL, payload, format='json')
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         recipes = Recipe.objects.filter(user=self.user)
         self.assertEqual(recipes.count(), 1)
