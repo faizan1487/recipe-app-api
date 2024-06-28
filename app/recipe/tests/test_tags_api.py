@@ -123,7 +123,7 @@ class PrivateTagsApiTests(TestCase):
             title='Porridge',
             time_minutes=3,
             price=Decimal('2.50'),
-            use=self.user,
+            user=self.user,
         )
         recipe2 = Recipe.objects.create(
             title='Omelette',
@@ -135,6 +135,6 @@ class PrivateTagsApiTests(TestCase):
         recipe1.tags.add(tag)
         recipe2.tags.add(tag)
         
-        res = self.client.get(TAGS_URL, {'assigned_only', 1})
+        res = self.client.get(TAGS_URL, {'assigned_only': 1})
         
         self.assertEqual(len(res.data), 1)
